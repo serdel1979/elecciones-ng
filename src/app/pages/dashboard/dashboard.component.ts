@@ -23,7 +23,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
   public changeBarSenador: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
   public changeBarDiputado: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
-  public changeBarConcejal: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
+  public changeBarParlamentReg: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
 
   public changeBarPresidente: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
   public changeBarGobernador: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
@@ -33,41 +33,41 @@ export class DashboardComponent implements OnDestroy, OnInit {
   loadedCircuit: Circuit[] = [] ;
 
   public resultBarSettingDiputadosNacionales: ResultBarSettings = {
-    title: "DIPUTADOS NACIONALES",
+    title: "DIPUTADOS NACIONALES",//* 
     data: [[]]
   }
 
   public resultBarSettingLegisladoresProvinciales: ResultBarSettings = {
-    title: "LEGISLADORES PROVINCIALES",
+    title: "LEGISLADORES PROVINCIALES",//*
     data: [[]]
   }
-  public resultBarSettingConcejales: ResultBarSettings = {
-    title: "CONCEJALES",
+  public resultBarParlamentariosRegionales: ResultBarSettings = {
+    title: "PARLAMENTARIOS DEL MERCOSUR REGIONALES",//*
     data: [[]]
   }
 
   public resultBarSettingPresidente: ResultBarSettings = {
-    title: "PRESIDENTE",
+    title: "PRESIDENTE",//*
     data: [[]]
   }
 
   public resultBarSettingGobernador: ResultBarSettings = {
-    title: "GOBERNADOR",
+    title: "GOBERNADOR",//*
     data: [[]]
   }
 
   public resultBarSettingParlamentarios: ResultBarSettings = {
-    title: "PARLAMENTARIOS MERCOSUR",
+    title: "PARLAMENTARIOS DEL MERCOSUR",//*
     data: [[]]
   }
 
   public resultBarSettingIntendente: ResultBarSettings = {
-    title: "INTENDENTE",
+    title: "INTENDENTE, CONCEJALES Y CONSEJEROS ESCOLARES",//*
     data: [[]]
   }
 
   public resultBarSettingSenadores: ResultBarSettings = {
-    title: "SENADORES",
+    title: "SENADORES NACIONALES",//
     data: [[]]
   }
 
@@ -136,8 +136,8 @@ export class DashboardComponent implements OnDestroy, OnInit {
       this.resultBarSettingDiputadosNacionales.data = result.totalesxDiputadosNacionales;
       this.changeBarDiputado.next(this.resultBarSettingDiputadosNacionales);
 
-      this.resultBarSettingConcejales.data = result.totalesxConcejales;
-      this.changeBarConcejal.next(this.resultBarSettingConcejales);
+      this.resultBarParlamentariosRegionales.data = result.totalesxParlamentariosMercosurReg;
+      this.changeBarParlamentReg.next(this.resultBarParlamentariosRegionales);
 
       this.resultBarSettingPresidente.data = result.totalesxPresidente;     //PRESIDENTE
       this.changeBarPresidente.next(this.resultBarSettingPresidente);
@@ -153,6 +153,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
       this.resultBarSettingSenadores.data = result.totalesxSenadores;     //SENADORES
       this.changeBarSenador.next(this.resultBarSettingSenadores);
+
 
     }
 
@@ -183,7 +184,6 @@ export class DashboardComponent implements OnDestroy, OnInit {
   {
 
     this.resultService.getResults().subscribe(result => {
-      console.log("llega");
       this.updateResults(result);
     });
 
