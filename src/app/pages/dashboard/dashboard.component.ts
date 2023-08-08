@@ -22,6 +22,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
 
   public changeBarSenador: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
+  public legisladoresProvinciales: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
   public changeBarDiputado: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
   public changeBarParlamentReg: Subject<ResultBarSettings> = new Subject<ResultBarSettings>();
 
@@ -131,7 +132,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
       this.circuitToLoadSubjectSettings.next(this.circuitToLoadSettings);
 
       this.resultBarSettingLegisladoresProvinciales.data = result.totalesxLegisladoresProvinciales;
-      this.changeBarSenador.next(this.resultBarSettingLegisladoresProvinciales);
+      this.legisladoresProvinciales.next(this.resultBarSettingLegisladoresProvinciales);
 
       this.resultBarSettingDiputadosNacionales.data = result.totalesxDiputadosNacionales;
       this.changeBarDiputado.next(this.resultBarSettingDiputadosNacionales);
